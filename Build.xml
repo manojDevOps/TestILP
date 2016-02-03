@@ -6,7 +6,7 @@
   <property name="work.home"    value="${basedir}/work"/>
   <property name="dist.home"     value="${basedir}/dist"/>
   <property name="src.home"      value="${basedir}/src"/>
- <!-- <property name="web.home"      value="${basedir}/web"/> -->
+
 
   <target name="help">
     <echo>You can use the following targets:</echo>
@@ -46,9 +46,6 @@
     <mkdir  dir="${dist.home}"/>
     <mkdir  dir="${work.home}/WEB-INF/classes"/>
     <!-- Copy static HTML and JSP files to work dir -->
-    <copy todir="${work.home}">
-      <fileset dir="${web.home}"/>
-    </copy>
   </target>
 
   <target name="compile" depends="prepare"
