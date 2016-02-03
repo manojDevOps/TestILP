@@ -1,0 +1,427 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema#",
+  "id": "http://schema.pearson.com/json-schema/v2.0/Registrar/Course_Section",
+  "doc": "id follows this format: 'http://schema.pearson.com/json-schema/{version}/{namespace-prefix}/{class}' ",
+  "doc": "The Course_Section message provides the basic definition of a Course_Section for DAALT.  This is sent when the Course_Section is created or updated.",
+  "doc": "Course_Section data should be sent as one of the first steps in creating a Course_Section for a Course in DAALT.",
+  "doc": "A Course_Section represents a particular offering of a Course.  A Student enrolls in a Course_Section, an Instructor teaches a Course_Section.",
+  "doc": "Primary Key / Unique Identifier of record. A query on the following fields should always result in a single record. ",
+  "doc": "    Course_Section_Source_System_Code + Course_Section_Source_System_Record_Id",
+  "doc": "",
+  "doc": "History",
+  "doc": "  Orlowski, 2015-03-17, Added more enums to Originating_System_Code (DAALTDemo and DAALTTest).",
+  "doc": "  Orlowski, 2015-03-18, Added more enums to for Mastering.",
+  "doc": "  Orlowski, 2015-03-18, Added Course_Section_Created_Date.",
+  "doc": "  ",
+  "doc": "  Orlowski, 2015-05-20, Updated Message_Version enum to allow 2.1",
+  "doc": "",
+  "doc": "  Orlowski, 2015-06-16, Added Originating_System_Code enum for 'Sumatra'  ",
+  "doc": "  Orlowski, 2015-06-17, Added fields for Console:",
+  "doc": "     Course_Section_Meeting_Schedule_Detail (array with detail fields)",
+  "doc": "  Orlowski, 2015-06-18, Added fields for Console:",
+  "doc": "     Material_Access_Start_Date and Material_Access_End_Date ",
+  "doc": "",
+  "doc": "  Orlowski, 2015-07-29, Converted several enum's to comments. ",
+  
+  
+  
+
+  "doc": "",
+  "doc": "",
+  "doc": "",
+  "required": false,
+  "properties": 
+  {
+    "Message_Type_Code": 
+    {
+      "type": "string",
+      "doc": "Literal string to identify the message type.",
+      "required": true,
+      "enum": 
+      [
+        "Course_Section"
+      ]
+    },
+
+    "Originating_System_Code": 
+    {
+      "type": "string",
+      "required": false,
+      "doc": "Literal string to identify the system that originated the message.  This allows us to contact the originator in event of a malformed message.",
+      "doc": "Expected values:",
+      "doc": "  Collections",
+      "doc": "  Mastering",
+      "doc": "  MathXL",
+      "doc": "  Registrar",
+      "doc": "  Sumatra",
+      "doc": "  DAALTDemo",
+      "doc": "  DAALTTest"
+    },
+
+    "Message_Version": 
+    {
+      "type": "string",
+      "required": true,
+      "doc": "Message_Version identifies the version of DAALT data services that can be used with this JSON schema.",
+      "enum": 
+      [
+        "2.0"
+      ]
+    },
+
+    "Transaction_Type_Code": 
+    {
+      "type": "string",
+      "doc": "Literal string to identify the transaction type.",
+      "required": true,
+      "enum": 
+      [
+        "Create",
+        "Update",
+        "CreateUpdate",
+        "Delete"
+      ]
+    },
+
+    "Transaction_Datetime": 
+    {
+      "type": "string",
+      "doc": "Format is 2014-06-26T18:35:51.675Z",
+      "required": true
+    },
+
+    "Course_Section_Source_System_Code": 
+    {
+      "type": "string",
+      "doc": "Identifies the source of the Course_Section GUID; Ex: Registrar system.",
+      "required": true,
+      "doc": "Examples include: ",
+      "doc": "  Mastering",
+      "doc": "  MXLHED",
+      "doc": "  MXLSCH",
+      "doc": "  MXLGBL",
+      "doc": "  Registrar"
+    },
+
+    "Course_Section_Source_System_Record_Id": 
+    {
+      "type": "string",
+      "doc": "Identifies the Course_Section in the source system; this is the GUID of the Course_Section in the source system such as GUID in Registrar system.",
+      "required": true
+    },
+
+    "Course_Source_System_Code": 
+    {
+      "type": "string",
+      "doc": "Identifies the source of the Course GUID; Ex: Registrar system.",
+      "required": true,
+      "doc": "Examples include: ",
+      "doc": "  Mastering",
+      "doc": "  MXLHED",
+      "doc": "  MXLSCH",
+      "doc": "  MXLGBL",
+      "doc": "  Registrar"
+    },
+
+    "Course_Source_System_Record_Id": 
+    {
+      "type": "string",
+      "doc": "Identifies the Course that is the parent of this Course_Section; this is the GUID of the Course in the source system such as GUID in Registrar system.",
+      "required": true
+    },
+
+    "Course_Section_Code": 
+    {
+      "type": "string",
+      "doc": "Course_Section_Code records the human friendly code assigned to the Course_Section. Ex: PSY101-Sec A, or Sec A, etc. May also be how the institution identifies the Course Section.",
+      "doc": "For Math XL this will have the same value as Course.Course_Code.",
+      "required": true
+    },
+
+    "Course_Section_Title": 
+    {
+      "type": "string",
+      "doc": "Course_Section_Title records the title of the Course_Section; typically provided by Registrar.",
+      "doc": "For Math XL this will have the same value as Course.Course_Title.",
+      "required": true
+    },
+
+    "Course_Section_Description": 
+    {
+      "type": "string",
+      "doc": "Course_Section_Description records a narrative description of the Course_Section; typically provided by Registrar.",
+      "required": false
+    },
+
+    "Call_Number": 
+    {
+      "type": "string",
+      "doc": "Call_Number records a acronym for the Course_Section; Ex: ENG 101.",
+      "required": false
+    },
+
+    "Section_Details": 
+    {
+      "type": "string",
+      "doc": "Section_Details is used to store specific data about the Course_Section.",
+      "required": false
+    },
+
+    "Time_Required_For_Completion": 
+    {
+      "type": "number",
+      "doc": "The actual or estimated number of clock minutes required for class completion. This number is especially important for career and technical ",
+      "doc": "education classes and may represent (in minutes) the clock hour requirement of the class, the number of minutes (or clock hours) of class time ",
+      "doc": "per week, times the number of equivalent weeks the class typically meets.",
+      "required": false
+    },
+
+    "Ref_Time_Units_Code": 
+    {
+      "type": "string",
+      "doc": "The units (i.e.: Minute) in which Time_Required_For_Completion is presented.",
+      "required": false,
+      "enum": 
+      [
+        "Week",
+        "Day",
+        "Hour",
+        "Minute",
+        "Second"
+      ]
+    },
+
+    "Ref_Instruction_Language_Code": 
+    {
+      "type": "string",
+      "doc": "The language of instruction used in the program or course. See codes below.",
+      "required": false,
+      "enum": 
+      [
+        "en-US",
+        "en-GB"
+      ]
+    },
+
+    "Virtual_Indicator": 
+    {
+      "type": "string",
+      "doc": "Indicates a school, institution, program, or class/section focuses primarily on instruction in which students and teachers are separated by time ",
+      "doc": "and/or location and interact through the use of computers and/or telecommunications technologies.",
+      "required": false
+    },
+
+    "Organization_Calendar_Session_Id": 
+    {
+      "type": "string",
+      "doc": "Organization_Calendar_Session_Id provides a link to the Session in the Organization calendar.",
+      "required": false
+    },
+
+    "Organization_Calendar_Session_Designator": 
+    {
+      "type": "string",
+      "doc": "The academic session (YYYY-MM) for which the data are recorded and applicable.",
+      "required": false
+    },
+
+    "Course_Section_Created_Date": 
+    {
+      "type": "string",
+      "doc": "Course_Section_Created_Date records the date when the Instructor created the course section.",
+      "required": false
+    },
+
+    "Material_Access_Start_Date": 
+    {
+      "type": "string",
+      "doc": "Material_Access_Start_Date records the date when the Instructor first allows the students to access the course materials. ",
+      "required": false
+    },
+
+    "Material_Access_End_Date": 
+    {
+      "type": "string",
+      "doc": "Material_Access_End_Date records the date when the students no longer have access the course materials. ",
+      "required": false
+    },
+    
+    "Course_Access_Start_Date": 
+    {
+      "type": "string",
+      "doc": "Course_Access_Start_Date records the date of the first day of class.",
+      "doc": "This field is typically loaded by Registrar.",
+      "doc": "First_Day_Of_Class_Date was the preferred name, but we already had data in the field named Course_Access_Start_Date.",
+      "required": false
+    },
+
+    "Course_Access_End_Date": 
+    {
+      "type": "string",
+      "doc": "Course_Access_End_Date records the date of the last class session.",
+      "doc": "This field is typically loaded by Registrar.",
+      "doc": "Last_Day_Of_Class_Date was the preferred name, but we already had data in the field named Course_Access_End_Date.",
+      "required": false
+    },
+
+    "Course_Meeting_Days_Of_Week_MTWTFSS": 
+    {
+      "type": "string",
+      "doc": "Course_Meeting_Days_Of_Week_MTWTFSS is a 7 character string with a Y or N in each position to indicate whether or not the class meets on that day of the week.",
+      "doc": "Ex:YNYNYNN would be the value for a course that meets on Monday, Wednesday, and Friday.",
+      "required": false
+    },
+
+    "Open_Enrollment_Begin_Datetime": 
+    {
+      "type": "string",
+      "doc": "Open_Enrollment_Begin_Datetime records the date when the students are first allowed to enroll in the Course Section.",
+      "required": false
+    },
+
+    "Open_Enrollment_End_Datetime": 
+    {
+      "type": "string",
+      "doc": "Open_Enrollment_End_Datetime records the date when enrollment in the Course Section closes.",
+      "required": false
+    },
+
+    "Course_Section_Meeting_Schedule": 
+    {
+      "type": "string",
+      "doc": "  ",
+      "doc": "  ",
+      "doc": "Usage Note - 2015-06-17  ",
+      "doc": "  For most purposes, we RECOMMEND that you use field Course_Section_Meeting_Schedule_Detail instead of this field.",
+      "doc": "  Future plan is to remove Course_Section_Meeting_Schedule from the schema",
+      "doc": "  ",
+      "doc": "  ",
+      "doc": "Course_Section_Meeting_Schedule records descriptive text of when the course section meets. Ex: 'Monday 8:00-10:00', 'Tuesday 8:00-10:00', 'Friday 7:00-7:55'",
+      "doc": "  ",
+      "doc": "  ",
+      "doc": "  ",
+      "required": false
+    },
+
+
+    "Course_Section_Meeting_Schedule_Detail": 
+    {
+      "type": "array",
+      "required": false,
+      "doc": "Contains an array of meeting days with begin and end time, one row for each day and time during the week that the class meets.",
+      "doc": "  Example: Data like this put into proper fields: ",
+      "doc": "    Monday  9:00 AM 10:15 AM",
+      "doc": "    Wednesday  9:00 AM 10:15 AM",
+      "doc": "    Friday  9:00 AM 10:15 AM",
+      "items": 
+      {
+        "type": "object",
+        "required": false,
+        "properties": 
+        {
+          "Day_Of_Week": 
+          {
+            "type": "string",
+            "doc": "Day_Of_Week records the day of the week (Monday, Tuesday, etc.) that the class meets.",
+            "required": true,
+            "enum": 
+            [
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ]
+          },
+          
+          "Meeting_Sequence": 
+          {
+            "type": "number",
+            "doc": "Meeting_Sequence is provided for the weird case where a class section meets more than once per day.  ",
+            "doc": "If that happens, use values like 1, 2, 3 to distinguish these from one another.  ",
+            "required": false
+          },
+          
+          "Meeting_Type": 
+          {
+            "type": "number",
+            "doc": "Meeting_Type is class session  or lab as ideas.  ",
+            "doc": "Suggested values:  ",
+            "doc": "  ClassSession  ",
+            "doc": "  Lab  ",
+            "doc": "  FieldTrip  ",
+            "required": false
+          },
+                    
+          "Meeting_Start_Time": 
+          {
+            "type": "string",
+            "doc": "Meeting_Start_Time records the time when class begins on the day of week noted. ",
+            "required": true
+          },
+
+          "Meeting_End_Time": 
+          {
+            "type": "string",
+            "doc": "Meeting_End_Time records the time when class ends on the day of week noted. ",
+            "required": true
+          }
+        }
+      }
+    },
+
+
+
+    "Transformation_History": 
+    {
+      "doc": "Transformation_History records an array of fields use to capture message transformation history. ",
+      "type": "array",
+      "required": false,
+      "items": 
+      {
+        "type": "object",
+        "required": false,
+        "properties": 
+        {
+          "Transform_Datetime": 
+          {
+            "type": "string",
+            "doc": "Records the datetime when the message was transformed from one version to another",
+            "doc": "Format is 2014-06-26T18:35:51.675Z",
+            "required": true
+          },
+
+          "From_Version": 
+          {
+            "type": "string",
+            "doc": "Identifies the message version prior to the transformation that occurred on Transformation_Datetime",
+            "required": true,
+            "enum": 
+            [
+              "1.0",
+              "2.0"
+            ]
+          },
+
+          "To_Version": 
+          {
+            "type": "string",
+            "doc": "Identifies the message version after the transformation that occurred on Transformation_Datetime",
+            "required": true,
+            "enum": 
+            [
+              "1.0",
+              "2.0"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
