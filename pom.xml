@@ -6,6 +6,26 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<url>http://maven.apache.org</url>
+	
+		<build>
+		<plugins>							
+		   <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>2.4</version>
+      <configuration>
+        <archive>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>com.ilp.sumatra.core.MainApp</mainClass>
+          </manifest>
+        </archive>
+      </configuration>				
+			</plugin>
+		</plugins>
+</build>
+
 
 	<dependencies>
 		<dependency>
@@ -13,11 +33,22 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.5.3</version>
 		</dependency>
+
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>2.5.3</version>
+        		<groupId>commons-lang</groupId>
+        		<artifactId>commons-lang</artifactId>
+        		<version>2.4</version>
 		</dependency>
+
+
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+       	</dependency>
+
+		
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
