@@ -1,7 +1,7 @@
 <project name="My Project" default="help" basedir=".">
   <!-- Define the properties used by the build -->
-  <property name="app.name"      value="TestILP"/>
-  <property name="app.version"   value="0.1-dev"/>
+  <property name="app.name"      value="ilpsumatracs"/>
+  <property name="app.version"   value="0.0.1-SNAPSHOT"/>
   <property name="tcserver.home" value="D:/apache-tomcat-8.0.30-windows-x86/apache-tomcat-8.0.30" />
   <property name="work.home"    value="${basedir}/work"/>
   <property name="dist.home"     value="${basedir}/dist"/>
@@ -23,7 +23,7 @@
 
   <!-- Define the CLASSPATH -->
   <path id="compile.classpath">
-    <fileset dir="${tcserver.home}/bin">
+    <fileset dir="${tc server.home}/bin">
       <include name="*.jar"/>
     </fileset>
     <pathelement location="${tcserver.home}/lib"/>
