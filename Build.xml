@@ -2,8 +2,8 @@
   <!-- Define the properties used by the build -->
   <property name="app.name"      value="ilpsumatracs"/>
   <property name="app.version"   value="0.0.1-SNAPSHOT"/>
-  <property name="tcserver.home" value="D:/apache-tomcat-8.0.30-windows-x86/apache-tomcat-8.0.30" />
-  <property name="work.home"    value="${basedir}/work"/>
+  <property name="tcserver.home" value="D:/apache-tomcat-8.0.30-windows-x86/apache-tomcat-8.0.30"/>
+  <property name="work.home"     value="${basedir}/work"/>
   <property name="dist.home"     value="${basedir}/dist"/>
   <property name="src.home"      value="${basedir}/src"/>
 
@@ -23,7 +23,7 @@
 
   <!-- Define the CLASSPATH -->
   <path id="compile.classpath">
-    <fileset dir="${tc server.home}/bin">
+    <fileset dir="${tcserver.home}/bin">
       <include name="*.jar"/>
     </fileset>
     <pathelement location="${tcserver.home}/lib"/>
